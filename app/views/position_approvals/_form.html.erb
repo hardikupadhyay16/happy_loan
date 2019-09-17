@@ -1,0 +1,74 @@
+<%= form_for @position_approval, :html => { :class => 'form-horizontal position_approval' } do |f| %>
+
+  <% if @position_approval.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@position_approval.errors.count, 'error') %> prohibited this position_approval from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @position_approval.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :emp_requisition_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.collection_select :emp_requisition_id, EmpRequisition.all, :id, :title, {}, {:class => 'form-control'} %>
+    </div>
+    <%=f.error_span(:emp_requisition_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :annual_compensation, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.number_field :annual_compensation, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:annual_compensation) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :phone, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:phone) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.email_field :email, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:email) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :approved, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%#= f.radio_button :approved, {'Approved': true, 'Not Approved': false },:class => 'form-control' %>
+      <%= f.radio_button :approved, true %>
+      <label for="approved" class="btn">Approved</label>
+
+      <%= f.radio_button :approved, false%>
+      <label for="not-approved" class="btn ">Not Approved</label>
+    </div>
+    <%=f.error_span(:approved) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_area :comment, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:comment) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t('helpers.links.cancel')),
+                position_approvals_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

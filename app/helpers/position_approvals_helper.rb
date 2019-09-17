@@ -1,0 +1,2 @@
+module PositionApprovalsHelper
+end

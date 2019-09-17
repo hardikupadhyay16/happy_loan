@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  annual_compensation: 1
+  phone: MyString
+  email: MyString
+  approved: false
+  comment: MyText
+  emp_requisition: one
+
+two:
+  annual_compensation: 1
+  phone: MyString
+  email: MyString
+  approved: false
+  comment: MyText
+  emp_requisition: two

@@ -1,0 +1,44 @@
+<%- model_class = EmpRequisition -%>
+<div class="page-header text-center">
+  <h1><%=t '.title', :default => 'Employee Requisition' %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:job_hours) %></th>
+      <th><%= model_class.human_attribute_name(:start_date) %></th>
+      <th><%= model_class.human_attribute_name(:position) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t('helpers.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @emp_requisitions.each do |emp_requisition| %>
+      <tr>
+        <td><%= link_to emp_requisition.id, emp_requisition_path(emp_requisition) %></td>
+        <td><%= emp_requisition.title %></td>
+        <td><%= emp_requisition.job_hours %></td>
+        <td><%= emp_requisition.start_date %></td>
+        <td><%= emp_requisition.position %></td>
+        <td><%= emp_requisition.user_id %></td>
+        <td><%=l emp_requisition.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t('helpers.links.edit')),
+                      edit_emp_requisition_path(emp_requisition), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t('helpers.links.destroy')),
+                      emp_requisition_path(emp_requisition),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t('helpers.links.confirm', :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t('helpers.links.new')),
+            new_emp_requisition_path,
+            :class => 'btn btn-primary' %>

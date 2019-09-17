@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  job_hours: MyString
+  start_date: 2019-09-17
+  position: 1
+  user: one
+
+two:
+  title: MyString
+  job_hours: MyString
+  start_date: 2019-09-17
+  position: 1
+  user: two
